@@ -89,7 +89,8 @@ rely only on the overall size of the diff to verify this kind of replacement.
 Step 3. Applying renames to the base branch.
 
 Create a new "aid base" branch from the original PR base branch. Use a separate
-worktree if practical.
+worktree if practical. If the original PR is behind the base branch, create the
+aid base branch from their common ancestor, not the current state of the base.
 
 Then perform the replacements identified in step 2. HEAVILY prefer automatic
 tools with no AI input like `sed` and `ast-grep`.
@@ -110,9 +111,10 @@ replacements done - commands and scope.
 
 Step 4. Create the review aid PR.
 
-Back in the original PR worktree (likely the main one for the repository),
-create a new "aid source" branch and point it to the same commit as the original
-PR source branch.
+Create a new "aid source" branch from the "aid base" branch. Make a new commit
+on that branch setting the repository state to be exactly the same as the
+original source branch. This way, the sum of aid base and aid source changes is
+the same as the original PR changes.
 
 Check the diff between the aid base branch and the aid source branch. It should
 be shorter and free of noise identified in step 1. If not, go back to step 2 or
