@@ -62,8 +62,8 @@ after the feature is merged.
 
  describe("parser", () => {
 -  jest.mock("./tokenizer");
-+  vi.mock("./tokenizer");
 -  it("parses a valid token", () => {
++  vi.mock("./tokenizer");
 +  it("parses a valid token", async () => {
      expect(parse("OK")).toBe(true);
    });
