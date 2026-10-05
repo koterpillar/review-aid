@@ -65,6 +65,27 @@ might be better for catching other similar renames.)
 it, but that's a separate change that should be reviewed, not mechanical noise.
 For the review aid PR, replacing `RequestData` with `Request` would help.
 
+A framework or library migration often creates many rename pairs at once. For
+example, a whole namespace of functions, types, or methods can change names
+together. Before you write any replacement command, list every rename pair
+for the PR at hand. Report the full list to the user. This list is your plan
+for step 3, and it is also a record of the work.
+
+Treat each pair in the list as its own independent, literal, global
+find/replace. Run each one as its own command, with `sed` or `ast-grep`, and
+verify its own contribution to the diff on its own. Do not combine several
+pairs into one script. A single script that handles several pairs with
+shared logic can hide a wrong replacement in one pair inside the results of
+the other pairs, and this makes the error hard to find during verification.
+
+Some old names do not map to a single new name. The correct new name depends
+on the surrounding code, for example an argument, a method chain, or a branch
+of an if statement. This kind of replacement is not noise removal. It is a
+judgment call, and it can pick the wrong replacement for some occurrences.
+Mark this kind of replacement as a separate, higher-risk category, and tell
+the user about it. Verify a sample of each resulting variant by hand. Do not
+rely only on the overall size of the diff to verify this kind of replacement.
+
 Step 3. Applying renames to the base branch.
 
 Create a new "aid base" branch from the original PR base branch. Use a separate
