@@ -18,7 +18,17 @@ Here are the step details:
 
 Step 1. Identifying the base and source branches
 
-FIXME
+If the user gave a PR (URL, ID, or "this PR"/"current PR"), look it up via the
+appropriate forge (GitHub, Bitbucket, etc.) tooling (`gh`, `twg`) or MCPs to get
+its source branch and destination (base) branch.
+
+If no PR was specified, use the current checked-out branch as the source
+branch, and that branch's configured upstream/tracking branch as the base
+branch. If there is no tracking branch, fall back to the repository's main
+branch (e.g. `main` or `master`) as the base.
+
+If the base/source branches are still ambiguous, ask the user to confirm
+before proceeding.
 
 Step 2. Identifying the noise.
 
