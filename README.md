@@ -1,4 +1,8 @@
-# review-aid
+# Review aid PR skill
+
+```shell
+npx skills add koterpillar/review-aid
+```
 
 ## What the skill does
 
