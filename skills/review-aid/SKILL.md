@@ -32,10 +32,14 @@ before proceeding.
 
 Step 2. Identifying the noise.
 
+The PR is expected to have both significant changes as well as rename noise.
 Inspect the diff for the current PR. Pay attention to type, function, class and
-other identifier renames. Also consider replacements with similar interfaces if
-the refactoring replaced, for example, one dependency with another with a
-similar interface.
+other identifier renames, as well as moved files. Also consider replacements
+with similar interfaces if the refactoring replaced, for example, one dependency
+with another with a similar interface.
+
+Remember which files or identifiers got renamed or replaced (semantically). If
+there are none, stop and tell the user you can't identify any.
 
 Examples:
 
