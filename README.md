@@ -6,12 +6,11 @@ npx skills add koterpillar/review-aid
 
 ## What the skill does
 
-A large refactoring pull request (PR, a set of proposed code changes) mixes
-two kinds of changes. One kind is a rename or a move. The other kind is a
-real, meaningful change. When a reviewer reads the PR, the renames fill most
-of the diff (the list of changed lines). The reviewer must search through the
-renames to find the real changes. This is slow and it increases the chance
-that the reviewer misses a real change.
+A large refactoring PR mixes two kinds of changes. One kind is a rename or a
+move. The other kind is a real, meaningful change. When a reviewer reads the PR,
+the renames fill most of the diff. The reviewer must search through the renames
+to find the real changes. This is slow and it increases the chance that the
+reviewer misses a real change.
 
 The `review-aid` skill creates a second PR that removes the rename noise.
 
